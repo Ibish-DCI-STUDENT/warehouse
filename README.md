@@ -20,4 +20,4 @@ log actions from users, and provide reporting functionalities.
 
 - Author: [Ibish Selmani](https://github.com/Ibish-DCI-STUDENT/warehouse)
   
-[GNU AFFERO GENERAL PUBLIC LICENSE]([URL](https://github.com/Ibish-DCI-STUDENT/warehouse](https://raw.githubusercontent.com/Ibish-DCI-STUDENT/warehouse/main/LICENSE.txt)https://raw.githubusercontent.com/Ibish-DCI-STUDENT/warehouse/main/LICENSE.txt)https://github.com/Ibish-DCI-STUDENT/warehouse](https://raw.githubusercontent.com/Ibish-DCI-STUDENT/warehouse/main/LICENSE.txt)https://raw.githubusercontent.com/Ibish-DCI-STUDENT/warehouse/main/LICENSE.txt)
+ #[GNU AFFERO GENERAL PUBLIC LICENSE]([URL](https://github.com/Ibish-DCI-STUDENT/warehouse](https://raw.githubusercontent.com/Ibish-DCI-STUDENT/warehouse/main/LICENSE.txt)https://raw.githubusercontent.com/Ibish-DCI-STUDENT/warehouse/main/LICENSE.txt)https://github.com/Ibish-DCI-STUDENT/warehouse](https://raw.githubusercontent.com/Ibish-DCI-STUDENT/warehouse/main/LICENSE.txt)https://raw.githubusercontent.com/Ibish-DCI-STUDENT/warehouse/main/LICENSE.txt)
