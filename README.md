@@ -19,3 +19,4 @@ log actions from users, and provide reporting functionalities.
 - None at the moment
 
 Author: [Ibish Selmani](https://github.com/Ibish-DCI-STUDENT/warehouse)
+Licence:GNU AFFERO GENERAL PUBLIC LICENSE
