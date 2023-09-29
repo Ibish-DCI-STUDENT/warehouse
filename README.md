@@ -8,8 +8,11 @@ log actions from users, and provide reporting functionalities.
 
 ## Planned Features:
 - A user system with roles and permissions for listing and placing orders.
+- 
 - Maintain the stock of a warehouse.
+- 
 - Order items from the warehouse.
+- 
 - Reporting.
 
 ## Implemented Features:
