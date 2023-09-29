@@ -19,4 +19,5 @@ log actions from users, and provide reporting functionalities.
 - None at the moment
 
 - Author: [Ibish Selmani](https://github.com/Ibish-DCI-STUDENT/warehouse)
+  
 - Licence: [GNU AFFERO GENERAL PUBLIC LICENSE ]([https://github.com/Ibish-DCI-STUDENT/warehouse](https://raw.githubusercontent.com/Ibish-DCI-STUDENT/warehouse/main/LICENSE.txt)https://raw.githubusercontent.com/Ibish-DCI-STUDENT/warehouse/main/LICENSE.txt)
