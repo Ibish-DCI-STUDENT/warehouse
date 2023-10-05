@@ -5,30 +5,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Warehouse Management System</title>
+
+
 </head>
 <body>
+
+    <div class="contact-popup">
+        <div class="contact-popup-content">
+            <span class="contact-popup-close" onclick="closeContactPopup()">&times;</span>
+            <h2>Contact Us</h2>
+            <form action="mailto:ibish.s@live.com" method="post">
+                <input type="text" name="name" placeholder="Your name">
+                <input type="email" name="email" placeholder="Your email">
+                <textarea name="message" placeholder="Your message"></textarea>
+                <input type="submit" value="Send">
+            </form>
+        </div>
+    </div>
+      
+    
     <header>
         <h1>Warehouse Management System</h1>
-        <img src="logo.jpeg" alt="Warehouse Logo">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#" id="contact-link">Contact</a></li> <!-- Add an id to the Contact Us link -->
+
+            </ul>
+        </nav>
     </header>
-    
     <main>
+  
+
+        
         <section class="intro">
             <h2>Welcome to Our Warehouse Management System!</h2>
             <p>An efficient solution for optimizing your warehouse operations.</p>
             <p class="coming-soon">Coming Soon!</p>
         </section>
 
+      
         <section class="features">
-            <h2>Key Features</h2>
-            <ul>
-                <li>User System with Roles and Permissions</li>
-                <li>Maintain Warehouse Stock</li>
-                <li>Order Items from the Warehouse</li>
-                <li>Log Actions from Users</li>
-                <li>Reporting</li>
+            <h2>Our Menu of Features</h2>
+            <ul class="feature-list">
+                <li class="feature-box">
+                    <a href="#">User System with Roles and Permissions</a>
+                    <p>Control access with ease.</p>
+                </li>
+                <li class="feature-box">
+                    <a href="#">Maintain Warehouse Stock</a>
+                    <p>Keep track of your inventory effortlessly.</p>
+                </li>
+                <li class="feature-box">
+                    <a href="#">Order Items from the Warehouse</a>
+                    <p>Streamline your ordering process.</p>
+                </li>
+                <li class="feature-box">
+                    <a href="#">Log Actions from Users</a>
+                    <p>Keep a record of user activities.</p>
+                </li>
+                <li class="feature-box">
+                    <a href="#">Advanced Reporting</a>
+                    <p>Gain insights with comprehensive reporting.</p>
+                </li>
+                <li class="feature-box">
+                    <a href="#">Customizable Templates</a>
+                    <p>Tailor the system to your needs.</p>
+                </li>
+                <li class="feature-box">
+                    <a href="#">Mobile-Friendly Design</a>
+                    <p>Access on the go from any device.</p>
+                </li>
             </ul>
         </section>
+        
 
         <div class="image-container">
             <img src="images/4.jpeg" alt="Warehouse Image 1" width="550" height="320">
@@ -38,9 +90,6 @@
 
         </div>
         
-        
-
-
         <section class="comparison">
             <h2>Compare with the Competition</h2>
             <table>
@@ -83,10 +132,12 @@
             </table>
         </section>
     </main>
-
     <footer>
         <p>&copy; 2023 IS Warehouse Company</p>
         <a href="mailto:ibish.s@live.com">Contact Us</a>
     </footer>
+    
+    <script src="contact-popup.js"></script> <!-- Place the script tag here -->
+    
 </body>
 </html>
