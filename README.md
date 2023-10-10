@@ -18,6 +18,6 @@ log actions from users, and provide reporting functionalities.
 ## Implemented Features:
 - None at the moment
 
-- Author: [Ibish Selmani](https://github.com/Ibish-DCI-STUDENT/warehouse)
+- Author: [Ibish Selmani](https://ibish-dci-student.github.io/warehouse/)
   
 - Licence: [GNU AFFERO GENERAL PUBLIC LICENSE](https://raw.githubusercontent.com/Ibish-DCI-STUDENT/warehouse/main/LICENSE.txt)
