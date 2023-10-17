@@ -88,14 +88,37 @@ def check_user_authentication(username, password):
     return False
 
 def list_items_by_warehouse():
+    """Print a list of items by warehouse.
+
+    Returns:
+        A string indicating how many items were listed.
     """
-    List items in each warehouse.
-    """
-    for warehouse in range(1, 4):  # Support any number of warehouses
-        print(f"Items in warehouse {warehouse}:")
-        for i, item in enumerate(stock, 1):
-            if item['warehouse'] == warehouse:
-                print(f"{i}. {item['state']} {item['category']}")
+    # Create a dictionary to store the total number of items in each warehouse.
+    warehouse_item_counts = {}
+
+    # Iterate over all of the items in stock.
+    for item in stock:
+        # Get the warehouse ID.
+        warehouse_id = item["warehouse"]
+
+        # Add the item to the warehouse's count.
+        if warehouse_id not in warehouse_item_counts:
+            warehouse_item_counts[warehouse_id] = 0
+        warehouse_item_counts[warehouse_id] += 1
+        
+    # Print all the items in all the warehouses.
+    for item in stock:
+        print(f"{item['state']} {item['category'].lower()}")
+
+    # Print the total number of items in each warehouse.
+    for warehouse_id, item_count in warehouse_item_counts.items():  #Total Items in warehouse 1: 1346
+        print(f"Total Items in warehouse {warehouse_id}: {item_count}")
+
+    # Print the total number of items listed.
+    total_item_count = sum(warehouse_item_counts.values())
+    print(f"Listed {total_item_count} items.")
+
+    return f"Listed {total_item_count} items."
 
 @authenticate_user_decorator
 def search_and_order_item(user_name, authenticated):
@@ -122,7 +145,10 @@ def search_and_order_item(user_name, authenticated):
             if authenticated or user_name in user_auth_status:
                 selected_item = get_selected_item(found_items)
                 if selected_item:
-                    order_item(user_name, selected_item)
+                    # Calculate available_stock here
+                    available_stock = check_available_stock(selected_item['state'], selected_item['category'])
+                    order_item(user_name, selected_item, available_stock)  # Pass available_stock
+           
             break
 
 def search_items(item_name):
@@ -171,7 +197,7 @@ def get_selected_item(found_items):
         print("Invalid input. Please enter a number.")
     return None
 
-def order_item(user_name, selected_item):
+def order_item(user_name, selected_item, available_stock):
     """
     Order an item and record the order in the item's history.
 
@@ -179,17 +205,31 @@ def order_item(user_name, selected_item):
         user_name (str): The name of the authenticated user.
         selected_item (dict): The selected item to order.
     """
-    max_available_quantity = 0  # Initialize to 0
-    for item in stock:
-        if item['warehouse'] == selected_item['warehouse']:
-            max_available_quantity += 1  # Increase the available quantity
-
-    quantity = get_order_quantity(selected_item['state'], selected_item['category'], max_available_quantity)
+   
+    quantity = get_order_quantity(selected_item['state'], selected_item['category'],available_stock)
     if quantity is not None:
-        record_order(user_name, selected_item, quantity)
         session_actions.append(f"Ordered {quantity} of '{selected_item['state']} {selected_item['category']}' by {user_name}")
 
-def get_order_quantity(item_state, item_category, max_available_quantity):
+def check_available_stock(item_state, item_category):
+    """
+    Check the available stock of an item by state and category.
+
+    Args:
+        item_state (str): The state of the item.
+        item_category (str): The category of the item.
+
+    Returns:
+        int: The available stock quantity.
+    """
+
+    available_stock = 0
+    for item in stock:
+        if item['state'] == item_state and item['category'] == item_category:
+            available_stock += 1
+
+    return available_stock
+
+def get_order_quantity(item_state, item_category, available_stock):
     """
     Get the order quantity from the user.
 
@@ -203,28 +243,17 @@ def get_order_quantity(item_state, item_category, max_available_quantity):
     """
     while True:
         try:
-            quantity = int(input(f"How many would you like to order for '{item_state} {item_category}' (up to {max_available_quantity}): "))
-            if 0 < quantity <= max_available_quantity:
-                return quantity
+            
+            quantity = int(input(f"How many would you like to order for '{item_state} {item_category}' (up to {available_stock}): "))
+            if 0 < quantity <= available_stock:
+             # Check the available stock and make sure it is more than the requested quantity
+                available_stock = check_available_stock(item_state, item_category)
+                if available_stock >= quantity:
+                    return quantity  
             else:
                 print("Invalid quantity. Please enter a valid quantity within the available stock.")
         except ValueError:
             print("Invalid input. Please enter a number.")
-
-def record_order(user_name, selected_item, quantity):
-    """
-    Record an order in the item's history.
-
-    Args:
-        user_name (str): The name of the authenticated user.
-        selected_item (dict): The selected item to order.
-        quantity (int): The quantity to order.
-    """
-    order_date = dt.now().strftime("%Y-%m-%d %H:%M:%S")
-    order_history = selected_item.get('order_history', [])
-    order_history.append({"user_name": user_name, "quantity": quantity, "order_date": order_date})
-    selected_item['order_history'] = order_history
-    print(f"Ordered {quantity} of '{selected_item['state']} {selected_item['category']}' by {user_name} on {order_date}.")
 
 def browse_by_category():
     """
