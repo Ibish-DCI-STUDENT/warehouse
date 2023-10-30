@@ -8,7 +8,6 @@ def list_items_by_warehouse():
         for item in stock:
             if item['warehouse'] == warehouse:
                 print(f"- {item['state']} {item['category']}")
-                print(f"Thank you for your visit, {user}!")
                 
     
     # Calculate the total items in each warehouse
@@ -124,3 +123,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
+    
