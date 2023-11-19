@@ -114,14 +114,14 @@ def list_items_by_warehouse():
         warehouse_item_counts[warehouse_id] += 1
 
     # Print all the items in all the warehouses.
-    #for item in stock:
-        #print(f"{item['state']} {item['category'].lower()}")
+    # for item in stock:
+    # print(f"{item['state']} {item['category'].lower()}")
 
     # Print the total number of items in each warehouse.
     for (
         warehouse_id,
         item_count,
-    ) in warehouse_item_counts.items():  # Total Items in warehouse 1: 
+    ) in warehouse_item_counts.items():  # Total Items in warehouse 1:
         print(f"Total Items in warehouse {warehouse_id}: {item_count}")
 
     # Print the total number of items listed.

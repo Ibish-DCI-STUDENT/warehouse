@@ -3,11 +3,27 @@ import json
 from datetime import datetime, timedelta
 from random import random, randrange
 
-NAME_PREFIX = ('Brand new', 'Second hand', 'Almost new', 'High quality',
-               'Cheap', 'Elegant', 'Funny', 'Exceptional')
+NAME_PREFIX = (
+    "Brand new",
+    "Second hand",
+    "Almost new",
+    "High quality",
+    "Cheap",
+    "Elegant",
+    "Funny",
+    "Exceptional",
+)
 
-NAME_MAIN = ('Monitor', 'Laptop', 'Tablet', 'Smartphone', 'Headphones',
-             'Keyboard', 'Mouse', 'Router')
+NAME_MAIN = (
+    "Monitor",
+    "Laptop",
+    "Tablet",
+    "Smartphone",
+    "Headphones",
+    "Keyboard",
+    "Mouse",
+    "Router",
+)
 WAREHOUSES = ("Warehouse 1", "Warehouse 2")
 
 
@@ -24,7 +40,7 @@ def rand_option(options):
 
 def composed_name(prefix=NAME_PREFIX, suffix=NAME_MAIN):
     """Return a composed name."""
-    return rand_option(prefix).capitalize() + ' ' + rand_option(suffix).lower()
+    return rand_option(prefix).capitalize() + " " + rand_option(suffix).lower()
 
 
 def rand_date(start=None, end=None):
@@ -32,7 +48,7 @@ def rand_date(start=None, end=None):
     if not start:
         print("the start argument is required")
         return None
-    start_date = datetime.strptime(start, '%Y-%m-%d')
+    start_date = datetime.strptime(start, "%Y-%m-%d")
     if not end:
         end_date = datetime.now()
     else:
@@ -50,12 +66,14 @@ def create(amount=100):
     while len(data) < amount:
         state = rand_option(NAME_PREFIX)
         category = rand_option(NAME_MAIN)
-        data.append({
-            "state": state,
-            "category": category,
-            "warehouse": rand_integer(min_value=1, max_value=2),
-            "date_of_stock": rand_date(start='2019-08-10')
-            })
+        data.append(
+            {
+                "state": state,
+                "category": category,
+                "warehouse": rand_integer(min_value=1, max_value=2),
+                "date_of_stock": rand_date(start="2019-08-10"),
+            }
+        )
     return data
 
 
@@ -73,8 +91,10 @@ def create_and_save(amount=100, filename="warehouse"):
     save(data, filename)
 
 
-confirm = input("This will replace the data in the exercise."
-                " Are you sure you want to proceed?(y/n) ")
+confirm = input(
+    "This will replace the data in the exercise."
+    " Are you sure you want to proceed?(y/n) "
+)
 
 if confirm.lower() == "y":
     create_and_save(amount=300, filename="data")
