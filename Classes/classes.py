@@ -2,8 +2,6 @@ from datetime import datetime
 from collections import Counter
 from typing import List, Tuple, Dict
 
-
-# OK
 class Item:
     def __init__(self, state, category, warehouse, date_of_stock):
         self.state = state
