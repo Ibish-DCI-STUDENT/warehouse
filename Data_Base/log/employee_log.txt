@@ -3,3 +3,20 @@ Items Browsed:
  1. Browsed item: ios charger - 2023-12-30 23:43:55.635674
 Actions performed:
  1. Browsed Items - 2023-12-30 23:43:55.635674
+Session Report for Jeremy:
+Items Searched:
+ 1. Searched for item: Red Monitor - 2024-01-10 21:27:08.652802
+Items Ordered:
+ 1. Ordered 1 of item: Black Monitor - 2024-01-10 21:27:08.652802
+Actions performed:
+ 1. Searched and Ordered - 2024-01-10 21:27:08.652802
+Session Report for Jeremy:
+Items Searched:
+ 1. Searched for item: Red Monitor - 2024-01-10 21:29:11.430459
+Items Browsed:
+ 1. Browsed item: ios charger - 2024-01-10 21:29:11.430459
+Items Ordered:
+ 1. Ordered 3 of item: Red Monitor - 2024-01-10 21:29:11.430459
+Actions performed:
+ 1. Browsed Items - 2024-01-10 21:29:11.430459
+ 2. Searched and Ordered - 2024-01-10 21:29:11.430459

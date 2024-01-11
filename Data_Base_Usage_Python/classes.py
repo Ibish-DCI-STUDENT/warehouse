@@ -33,17 +33,15 @@ class NoResultsError(Exception):
         
         
 class Item:
-    def __init__(self, item_id, state, category, warehouse, date_of_stock):
-        self.item_id = item_id
+    def __init__(self, state, category, warehouse, date_of_stock):
         self.state = state
         self.category = category
         self.warehouse = warehouse
         self.date_of_stock = date_of_stock
-        
-        
+        self.sold = False  # New attribute to track if the item has been sold
     def __str__(self):
+
         return f"{self.state} {self.category}"
-    
 class Warehouse:
 
     def __init__(self, warehouse_id=None):
@@ -170,16 +168,16 @@ class User:
         except ValueError:
             print("Invalid input. Please enter a number.")
 class Employee(User):
-    """Employee class."""
-    
-    def __init__(self, user_name, password, employee_id=None, head_of=None):
-        """Construct object."""
+    def __init__(self, user_name=None, password=None, **kwargs):
         super().__init__(user_name, password)
-        self.employee_id = employee_id
-        self.head_of = head_of if head_of is not None else []
-
-
-
+        if user_name is None:
+            raise MissingArgument("user_name", "An employee cannot be anonymous.")
+        if password is None:
+            raise MissingArgument("password", "An employee requires authentication.")
+        
+        self.password = password
+        
+        self.head_of = [Employee(**employee) for employee in kwargs.get("head_of", [])]
         self.last_searched_item = self.last_browsed_item = None
         self.last_browsed_quantity = self.last_ordered_item = None
         self.last_ordered_quantity = self.last_ordered_item_state = None
@@ -233,9 +231,12 @@ class Employee(User):
                         f"{item.state} {item.category} (Warehouse {item.warehouse})"
                     )
                     count = item_counts.get(item_key, 0)
-                    date_str = item.date_of_stock.strftime("%Y-%m-%d")
-                    date_format = "%Y-%m-%d"
-                    days = (datetime.now().date() - item.date_of_stock).days
+                    date_str = item.date_of_stock
+                    date_format = "%Y-%m-%d %H:%M:%S"
+                    days = (
+                            datetime.now() -
+                            datetime.strptime(date_str, date_format)
+                        ).days
 
                     print(
                         f"{i}. {item_key}, Days in Stock: {days} days ,Available: {count} pcs"
@@ -289,7 +290,6 @@ class Employee(User):
                     print("Invalid input. Please enter a number for item selection")
         else:
             print("Item not found")
-
 
     def place_order(self, item: Item, quantity: int, item_counts: Counter, stock: List[Warehouse]):
         item_key = f"{item.state} {item.category} (Warehouse {item.warehouse})"

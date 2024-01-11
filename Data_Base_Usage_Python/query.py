@@ -1,5 +1,5 @@
 #query.py
-from classes import SessionReport, User,Warehouse,Employee 
+from classes import SessionReport, User,Warehouse
 from loader import Loader
 import os
 import json
